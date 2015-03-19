@@ -1,0 +1,32 @@
+<!doctype html>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Blogs List</title>
+	</head>
+	<body>
+		<h1> Blogs List</h1>
+		<ul>
+			{% for b in bloglist %}
+			
+				<li>
+					<h2><a href="/blogapp/{{b.id}}/">{{b.title}}</a></h2>
+					<p>{{b.text}}</p>
+					<h4>Comments</h4>
+					<ul>
+						{% for c in b.comments_set.all %}
+							<li>{{c.comment_text}}
+								<br/>
+								{{c.date}}
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
+
+
+
+		
